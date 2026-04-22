@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Mail, Sparkles, ArrowRight } from 'lucide-react'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function NewsletterModal() {
+  const { profile } = useAuth()
   const [visible, setVisible] = useState(false)
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (profile?.email) setEmail(profile.email)
+  }, [profile?.email])
 
   useEffect(() => {
     const alreadySeen = sessionStorage.getItem('newsletter-modal-seen')
@@ -67,7 +73,7 @@ export default function NewsletterModal() {
                 <>
                   <h3 className="text-lg font-bold text-brand-black text-center mb-1">Dicas de IA para Advogados</h3>
                   <p className="text-sm text-brand-gray-400 text-center mb-5">
-                    Receba semanalmente prompts juridicos exclusivos, dicas de IA e novidades do Jurid. Gratis.
+                    Receba semanalmente prompts jurídicos exclusivos, dicas de IA e novidades do Jurid. Grátis.
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-3">
@@ -96,8 +102,8 @@ export default function NewsletterModal() {
                   <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
                     <Sparkles size={24} className="text-green-600" />
                   </div>
-                  <h3 className="text-lg font-bold text-brand-black mb-1">Inscricao confirmada!</h3>
-                  <p className="text-sm text-brand-gray-400">Voce recebera nossas dicas juridicas em breve.</p>
+                  <h3 className="text-lg font-bold text-brand-black mb-1">Inscrição confirmada!</h3>
+                  <p className="text-sm text-brand-gray-400">Você receberá nossas dicas jurídicas em breve.</p>
                 </div>
               )}
             </div>

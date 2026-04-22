@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FileText, Download, ArrowRight, ChevronDown, ChevronUp, Copy, Check, Code2, Loader2 } from 'lucide-react'
@@ -73,48 +73,43 @@ export default function PromptsPage() {
   const [activeCategory, setActiveCategory] = useState<string>('all')
   const [expandedPrompt, setExpandedPrompt] = useState<string | null>(null)
   const [showJsonFor, setShowJsonFor] = useState<string | null>(null)
+  const didLoadRef = useRef(false)
 
   useEffect(() => {
-    let cancelled = false
+    if (didLoadRef.current) return
+    didLoadRef.current = true
 
     async function loadOrGenerate() {
       try {
         const existing = await getPrompts()
-        if (!cancelled && existing.length > 0) {
+        if (existing.length > 0) {
           setPrompts(existing)
           setLoading(false)
           return
         }
         const quizzes = await getQuizResponses()
         if (quizzes.length === 0) {
-          if (!cancelled) setLoading(false)
+          setLoading(false)
           return
         }
-        if (!cancelled) {
-          setGenerating(true)
-          setLoading(false)
-        }
+        setGenerating(true)
+        setLoading(false)
         const result = await generatePrompts(quizzes[0].id)
-        if (!cancelled) {
-          setPrompts(result.prompts)
-          setGenerating(false)
-          setProfile(prev => (prev ? { ...prev, prompts_generated: true } : prev))
-        }
+        setPrompts(result.prompts)
+        setGenerating(false)
+        setProfile(prev => (prev ? { ...prev, prompts_generated: true } : prev))
       } catch (err) {
-        if (!cancelled) {
-          setGenerating(false)
-          setLoading(false)
-          const msg = err instanceof Error ? err.message : 'Erro ao carregar prompts.'
-          toast(msg, 'error')
-          if (msg.toLowerCase().includes('skill')) {
-            navigate('/skill')
-          }
+        setGenerating(false)
+        setLoading(false)
+        const msg = err instanceof Error ? err.message : 'Erro ao carregar prompts.'
+        toast(msg, 'error')
+        if (msg.toLowerCase().includes('skill')) {
+          navigate('/skill')
         }
       }
     }
 
     loadOrGenerate()
-    return () => { cancelled = true }
   }, [setProfile, toast, navigate])
 
   const categories = useMemo(() => {
@@ -135,7 +130,7 @@ export default function PromptsPage() {
         <GlassCard variant="strong" padding="lg" className="max-w-md w-full text-center">
           <Loader2 size={48} className="text-brand-primary animate-spin mx-auto mb-6" />
           <h2 className="text-xl font-bold text-brand-black mb-2">Gerando seus prompts personalizados...</h2>
-          <p className="text-sm text-brand-gray-400">A Jurid AI esta criando 5 prompts sob medida para o seu perfil. Isto leva alguns segundos.</p>
+          <p className="text-sm text-brand-gray-400">A Jurid AI está criando 5 prompts sob medida para o seu perfil. Isto leva alguns segundos.</p>
         </GlassCard>
       </div>
     )
@@ -146,7 +141,7 @@ export default function PromptsPage() {
       <EmptyState
         icon={<FileText size={48} />}
         title="Nenhum prompt gerado ainda"
-        description="Complete o quiz juridico para a IA criar seus prompts personalizados."
+        description="Complete o quiz jurídico para a IA criar seus prompts personalizados."
         action={<Button onClick={() => navigate('/quiz')}>Iniciar Quiz <ArrowRight size={18} /></Button>}
       />
     )
@@ -158,7 +153,7 @@ export default function PromptsPage() {
     <motion.div className="max-w-4xl mx-auto space-y-4" variants={stagger} initial="hidden" animate="show">
       <motion.div variants={fadeUp} className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg lg:text-xl font-bold text-brand-black">{prompts.length} Prompts Juridicos</h2>
+          <h2 className="text-lg lg:text-xl font-bold text-brand-black">{prompts.length} Prompts Jurídicos</h2>
           <p className="text-xs text-brand-gray-400">Todos em JSON — copie e cole na sua IA</p>
         </div>
         <Button variant="secondary" size="sm" className="hidden sm:flex"><Download size={14} /> PDF</Button>
@@ -242,7 +237,7 @@ export default function PromptsPage() {
                       className="flex items-center gap-1 text-xs text-brand-gray-400 font-medium mt-3 cursor-pointer active:opacity-70"
                     >
                       {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
-                      {isExpanded ? 'Fechar' : `${prompt.variations.length} variacoes + dica de ouro`}
+                      {isExpanded ? 'Fechar' : `${prompt.variations.length} variações + dica de ouro`}
                     </button>
                   )}
                 </div>

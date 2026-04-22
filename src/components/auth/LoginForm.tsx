@@ -27,7 +27,7 @@ export default function LoginForm() {
     try {
       const { signIn } = await import("@/lib/api/auth");
       const result = await signIn(email, password);
-      setProfile(result.profile);
+      setProfile({ ...result.profile, email: result.user.email });
       navigate("/");
     } catch (err: unknown) {
       const message =
@@ -113,7 +113,7 @@ export default function LoginForm() {
       <div className="flex items-center justify-end">
         <Link
           to="/forgot-password"
-          className="text-sm text-brand-yellow hover:text-white transition-colors duration-200"
+          className="text-sm text-brand-primary hover:text-white transition-colors duration-200"
         >
           Esqueceu a senha?
         </Link>
@@ -121,7 +121,7 @@ export default function LoginForm() {
 
       <Button
         type="submit"
-        className="w-full bg-gradient-to-r from-brand-yellow-dark to-brand-yellow hover:from-brand-yellow hover:to-brand-yellow-light text-brand-black font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-brand-yellow/30 transition-all duration-300 flex items-center justify-center group"
+        className="w-full bg-gradient-to-r from-brand-primary-dark to-brand-primary hover:from-brand-yellow hover:to-brand-yellow-light text-brand-black font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-brand-yellow/30 transition-all duration-300 flex items-center justify-center group"
         size="lg"
         loading={loading}
       >

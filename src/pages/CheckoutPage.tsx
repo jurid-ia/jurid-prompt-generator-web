@@ -310,6 +310,7 @@ export default function CheckoutPage() {
         orderBump,
         couponCode: couponApplied ? couponCode : undefined,
         ...(paymentMethod === 'credit_card' ? {
+          installments: parseInt(form.installments) || 1,
           creditCard: {
             holderName: form.cardName,
             number: cardNumber,

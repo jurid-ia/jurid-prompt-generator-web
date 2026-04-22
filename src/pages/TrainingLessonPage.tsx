@@ -12,7 +12,7 @@ export default function TrainingLessonPage() {
   const [completed, setCompleted] = useState(false)
 
   if (!lesson) {
-    return <div className="text-center py-20 text-gray-500">Aula nao encontrada.</div>
+    return <div className="text-center py-20 text-gray-500">Aula não encontrada.</div>
   }
 
   return (
@@ -23,7 +23,7 @@ export default function TrainingLessonPage() {
         onClick={() => navigate(`/training/${courseId}/${moduleId}`)}
         className="flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors cursor-pointer active:scale-[0.97]"
       >
-        <ArrowLeft size={16} /> Voltar ao modulo
+        <ArrowLeft size={16} /> Voltar ao módulo
       </motion.button>
 
       <motion.div
@@ -45,7 +45,7 @@ export default function TrainingLessonPage() {
             <div className="w-16 h-16 rounded-full bg-[#A78F69]/10 border border-[#A78F69]/20 flex items-center justify-center">
               <Play size={28} className="text-[#A78F69]/60 ml-1" />
             </div>
-            <p className="text-sm text-gray-500">Video em breve</p>
+            <p className="text-sm text-gray-500">Vídeo em breve</p>
           </div>
         )}
       </motion.div>
@@ -70,11 +70,11 @@ export default function TrainingLessonPage() {
         >
           {completed ? (
             <>
-              <CheckCircle size={18} /> Concluida
+              <CheckCircle size={18} /> Concluída
             </>
           ) : (
             <>
-              <Circle size={18} /> Marcar como concluida
+              <Circle size={18} /> Marcar como concluída
             </>
           )}
         </button>

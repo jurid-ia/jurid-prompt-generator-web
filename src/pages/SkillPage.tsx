@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Sparkles, Target, TrendingUp, ArrowRight, Brain, BarChart3, Award, Loader2 } from 'lucide-react'
@@ -50,19 +50,18 @@ export default function SkillPage() {
   const [skill, setSkill] = useState<UserSkill | null>(null)
   const [loading, setLoading] = useState(true)
   const [generating, setGenerating] = useState(false)
+  const didLoadRef = useRef(false)
 
   useEffect(() => {
-    let cancelled = false
+    if (didLoadRef.current) return
+    didLoadRef.current = true
 
     async function loadOrGenerate() {
       try {
         const existing = await getLatestSkill()
-        if (!cancelled) {
-          setSkill(existing)
-          setLoading(false)
-        }
+        setSkill(existing)
+        setLoading(false)
       } catch {
-        if (cancelled) return
         try {
           const quizzes = await getQuizResponses()
           if (quizzes.length === 0) {
@@ -72,22 +71,17 @@ export default function SkillPage() {
           setGenerating(true)
           setLoading(false)
           const generated = await generateSkills(quizzes[0].id)
-          if (!cancelled) {
-            setSkill(generated)
-            setGenerating(false)
-            setProfile(prev => (prev ? { ...prev, quiz_completed: true } : prev))
-          }
+          setSkill(generated)
+          setGenerating(false)
+          setProfile(prev => (prev ? { ...prev, quiz_completed: true } : prev))
         } catch (err) {
-          if (!cancelled) {
-            setGenerating(false)
-            toast(err instanceof Error ? err.message : 'Erro ao gerar perfil. Tente novamente.', 'error')
-          }
+          setGenerating(false)
+          toast(err instanceof Error ? err.message : 'Erro ao gerar perfil. Tente novamente.', 'error')
         }
       }
     }
 
     loadOrGenerate()
-    return () => { cancelled = true }
   }, [setProfile, toast])
 
   if (loading) {
@@ -103,8 +97,8 @@ export default function SkillPage() {
       <div className="flex items-center justify-center min-h-[50vh]">
         <GlassCard variant="strong" padding="lg" className="max-w-md w-full text-center">
           <Loader2 size={48} className="text-brand-primary animate-spin mx-auto mb-6" />
-          <h2 className="text-xl font-bold text-brand-black mb-2">Analisando seu perfil juridico...</h2>
-          <p className="text-sm text-brand-gray-400">A Jurid AI esta processando suas respostas e criando seu perfil personalizado. Isto pode levar alguns segundos.</p>
+          <h2 className="text-xl font-bold text-brand-black mb-2">Analisando seu perfil jurídico...</h2>
+          <p className="text-sm text-brand-gray-400">A Jurid AI está processando suas respostas e criando seu perfil personalizado. Isto pode levar alguns segundos.</p>
         </GlassCard>
       </div>
     )
@@ -114,8 +108,8 @@ export default function SkillPage() {
     return (
       <div className="max-w-xl mx-auto text-center py-16 animate-fade-in">
         <Sparkles size={48} className="text-brand-primary mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-brand-black mb-2">Seu perfil IA ainda nao foi gerado</h2>
-        <p className="text-brand-gray-400 mb-6">Complete o quiz juridico para a IA criar seu perfil profissional.</p>
+        <h2 className="text-2xl font-bold text-brand-black mb-2">Seu perfil IA ainda não foi gerado</h2>
+        <p className="text-brand-gray-400 mb-6">Complete o quiz jurídico para a IA criar seu perfil profissional.</p>
         <Button onClick={() => navigate('/quiz')}>Iniciar Quiz <ArrowRight size={18} /></Button>
       </div>
     )
@@ -156,7 +150,7 @@ export default function SkillPage() {
           <GlassCard>
             <div className="flex items-center gap-2 mb-4">
               <BarChart3 size={18} className="text-brand-blue" />
-              <h3 className="font-semibold text-brand-black">Competencias identificadas</h3>
+              <h3 className="font-semibold text-brand-black">Competências identificadas</h3>
               <Badge variant="dark" size="sm">Jurid AI</Badge>
             </div>
             <div className="flex justify-around flex-wrap gap-4">
@@ -198,7 +192,7 @@ export default function SkillPage() {
           <GlassCard className="h-full">
             <div className="flex items-center gap-2 mb-3">
               <Target size={18} className="text-brand-primary-dark" />
-              <h3 className="font-semibold text-brand-black">Areas para crescer</h3>
+              <h3 className="font-semibold text-brand-black">Áreas para crescer</h3>
             </div>
             <div className="space-y-2">
               {skill.growth_areas.map((a, i) => (
@@ -228,7 +222,7 @@ export default function SkillPage() {
               ))}
             </div>
             <p className="text-[11px] text-brand-gray-400 mt-3">
-              Baseado na analise do seu perfil juridico, areas de atuacao e objetivos profissionais.
+              Baseado na análise do seu perfil jurídico, áreas de atuação e objetivos profissionais.
             </p>
           </GlassCard>
         </motion.div>

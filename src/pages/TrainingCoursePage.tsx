@@ -22,7 +22,7 @@ export default function TrainingCoursePage() {
   const [modules] = useState<TrainingModule[]>(DEMO_TRAINING_MODULES.filter(m => m.course_id === courseId))
 
   if (!course) {
-    return <div className="text-center py-20 text-gray-500">Curso nao encontrado.</div>
+    return <div className="text-center py-20 text-gray-500">Curso não encontrado.</div>
   }
 
   return (
@@ -46,7 +46,7 @@ export default function TrainingCoursePage() {
         {course.description && <p className="text-sm text-gray-400 mb-3">{course.description}</p>}
         <div className="flex items-center gap-2 text-xs text-gray-500">
           <BookOpen size={14} />
-          <span>{modules.length} modulos</span>
+          <span>{modules.length} módulos</span>
         </div>
       </motion.div>
 
@@ -84,7 +84,7 @@ export default function TrainingCoursePage() {
 
       {modules.length === 0 && (
         <div className="text-center py-12 text-gray-500 text-sm">
-          Nenhum modulo disponivel neste curso ainda.
+          Nenhum módulo disponível neste curso ainda.
         </div>
       )}
     </div>

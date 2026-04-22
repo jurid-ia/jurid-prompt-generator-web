@@ -26,10 +26,10 @@ function CopyMsg({ text }: { text: string }) {
 }
 
 const suggestions = [
-  { icon: Scale, text: 'Redigir peticao inicial trabalhista', color: 'from-brand-blue/20 to-brand-blue/5' },
-  { icon: Sparkles, text: 'Elaborar contestacao em acao civel', color: 'from-brand-primary/20 to-brand-primary/5' },
-  { icon: Bot, text: 'Criar parecer juridico sobre LGPD', color: 'from-blue-500/20 to-cyan-500/10' },
-  { icon: Clock, text: 'Contrato de honorarios advocaticios', color: 'from-brand-primary-dark/20 to-brand-primary-dark/5' },
+  { icon: Scale, text: 'Redigir petição inicial trabalhista', color: 'from-brand-blue/20 to-brand-blue/5' },
+  { icon: Sparkles, text: 'Elaborar contestação em ação cível', color: 'from-brand-primary/20 to-brand-primary/5' },
+  { icon: Bot, text: 'Criar parecer jurídico sobre LGPD', color: 'from-blue-500/20 to-cyan-500/10' },
+  { icon: Clock, text: 'Contrato de honorários advocatícios', color: 'from-brand-primary-dark/20 to-brand-primary-dark/5' },
 ]
 
 export default function ChatPage() {
@@ -165,9 +165,9 @@ export default function ChatPage() {
           <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-brand-blue/20 to-brand-blue/5 border border-brand-blue/20 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-brand-blue/10">
             <Scale size={28} className="text-brand-blue" />
           </div>
-          <h2 className="text-xl lg:text-2xl font-bold text-brand-black">Gerador de Prompts Juridicos</h2>
+          <h2 className="text-xl lg:text-2xl font-bold text-brand-black">Gerador de Prompts Jurídicos</h2>
           <p className="text-xs text-brand-gray-400 mt-1 max-w-sm mx-auto">
-            Gere prompts para peticoes, contratos, pareceres e muito mais. Otimizados para advogados brasileiros.
+            Gere prompts para petições, contratos, pareceres e muito mais. Otimizados para advogados brasileiros.
           </p>
         </div>
 
@@ -196,12 +196,12 @@ export default function ChatPage() {
           onClick={startNewConversation}
           className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-brand-blue text-white font-semibold text-sm hover:bg-brand-blue/90 transition-all cursor-pointer active:scale-[0.97] shadow-sm"
         >
-          <Plus size={18} /> Nova conversa juridica
+          <Plus size={18} /> Nova conversa jurídica
         </motion.button>
 
         {conversations.length > 0 && (
           <div>
-            <h3 className="text-xs font-semibold text-brand-gray-400 uppercase tracking-wider mb-2 px-1">Historico</h3>
+            <h3 className="text-xs font-semibold text-brand-gray-400 uppercase tracking-wider mb-2 px-1">Histórico</h3>
             <div className="space-y-1.5">
               {conversations.map(conv => (
                 <motion.div
@@ -262,7 +262,7 @@ export default function ChatPage() {
               <div className="glass-strong rounded-3xl p-6 max-w-xs">
                 <Scale size={28} className="text-brand-blue mx-auto mb-3" />
                 <p className="text-sm font-medium text-brand-black mb-1">Pronto para gerar</p>
-                <p className="text-xs text-brand-gray-400">Descreva a peca ou documento que precisa e receba um prompt juridico profissional.</p>
+                <p className="text-xs text-brand-gray-400">Descreva a peça ou documento que precisa e receba um prompt jurídico profissional.</p>
               </div>
             </div>
           )}
@@ -357,7 +357,7 @@ export default function ChatPage() {
               value={input}
               onChange={e => { setInput(e.target.value); if (textareaRef.current) { textareaRef.current.style.height = 'auto'; textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 120) + 'px' } }}
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage() } }}
-              placeholder="Descreva a peca ou documento juridico que precisa..."
+              placeholder="Descreva a peça ou documento jurídico que precisa..."
               className="w-full resize-none bg-transparent px-4 py-3 text-sm focus:outline-none min-h-[44px] max-h-[120px] placeholder:text-brand-gray-400"
               rows={1}
             />

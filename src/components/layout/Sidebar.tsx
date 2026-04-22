@@ -22,7 +22,7 @@ interface SidebarProps {
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/quiz', icon: ClipboardList, label: 'Quiz Juridico' },
+  { to: '/quiz', icon: ClipboardList, label: 'Quiz Jurídico' },
   { to: '/skill', icon: Sparkles, label: 'Meu Perfil IA' },
   { to: '/prompts', icon: FileText, label: 'Prompts' },
   { to: '/chat', icon: MessageSquare, label: 'Gerador de Prompts' },
@@ -30,8 +30,13 @@ const navItems = [
 ]
 
 export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
-  const { profile } = useAuth()
+  const { profile, logout } = useAuth()
   const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login', { replace: true })
+  }
 
   return (
     <aside
@@ -93,7 +98,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
           {!collapsed && <span>{profile?.display_name || profile?.full_name || 'Perfil'}</span>}
         </NavLink>
         <button
-          onClick={() => navigate('/login')}
+          onClick={handleLogout}
           className={cn(
             'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-brand-gray-600 hover:bg-red-50 hover:text-red-600 transition-all cursor-pointer',
             collapsed && 'justify-center px-0'

@@ -24,7 +24,7 @@ export default function TrainingPage() {
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <GraduationCap size={48} className="text-gray-600 mb-4" />
         <h3 className="text-lg font-semibold text-gray-300">Treinamentos em breve</h3>
-        <p className="text-sm text-gray-500 mt-1">Novos cursos estao sendo preparados. Volte em breve!</p>
+        <p className="text-sm text-gray-500 mt-1">Novos cursos estão sendo preparados. Volte em breve!</p>
       </div>
     )
   }
@@ -43,7 +43,7 @@ export default function TrainingPage() {
         </div>
         <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">Treinamentos</h1>
         <p className="text-gray-400 text-sm lg:text-base max-w-lg mx-auto">
-          Domine o uso de IA na advocacia com cursos praticos feitos para advogados que querem resultados reais.
+          Domine o uso de IA na advocacia com cursos práticos feitos para advogados que querem resultados reais.
         </p>
       </motion.div>
 
@@ -79,7 +79,7 @@ export default function TrainingPage() {
 
             <div className="flex items-center gap-2 text-xs text-gray-500">
               <BookOpen size={14} />
-              <span>{course.module_count} modulos</span>
+              <span>{course.module_count} módulos</span>
             </div>
           </motion.div>
         ))}

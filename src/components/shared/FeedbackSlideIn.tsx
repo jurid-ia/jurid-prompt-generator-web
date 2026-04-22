@@ -52,7 +52,7 @@ export default function FeedbackSlideIn() {
                     <MessageSquare size={16} className="text-brand-primary-dark" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brand-black">Como esta sua experiencia?</p>
+                    <p className="text-sm font-semibold text-brand-black">Como está sua experiência?</p>
                     <p className="text-[10px] text-brand-gray-400">Avalie o Jurid Prompts</p>
                   </div>
                 </div>
@@ -90,14 +90,14 @@ export default function FeedbackSlideIn() {
                   disabled={rating === 0}
                   className="w-full mt-3 px-4 py-2.5 bg-brand-primary-dark text-white rounded-xl text-xs font-semibold hover:bg-brand-primary-dark/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer active:scale-[0.97]"
                 >
-                  Enviar avaliacao
+                  Enviar avaliação
                 </button>
               </>
             ) : (
               <div className="text-center py-3">
                 <Star size={32} className="text-brand-primary-light fill-brand-primary-light mx-auto mb-2" />
                 <p className="text-sm font-semibold text-brand-black">Obrigado!</p>
-                <p className="text-xs text-brand-gray-400">Sua opiniao e muito importante.</p>
+                <p className="text-xs text-brand-gray-400">Sua opinião é muito importante.</p>
               </div>
             )}
           </div>

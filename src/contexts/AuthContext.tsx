@@ -49,7 +49,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const data = await getMe()
       setUser({ id: data.id })
-      _setProfile(data.profile)
+      _setProfile({ ...data.profile, email: data.email })
     } catch {
       clearToken()
       setUser(null)

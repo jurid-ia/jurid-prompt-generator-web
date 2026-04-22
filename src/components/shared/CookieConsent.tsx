@@ -40,9 +40,9 @@ export default function CookieConsent() {
                   <Cookie size={20} className="text-brand-primary-dark" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-brand-black mb-0.5">Politica de Cookies e Privacidade</p>
+                  <p className="text-sm font-semibold text-brand-black mb-0.5">Política de Cookies e Privacidade</p>
                   <p className="text-xs text-brand-gray-400 leading-relaxed">
-                    Utilizamos cookies para melhorar sua experiencia. Seus dados sao protegidos conforme a LGPD (Lei 13.709/2018).
+                    Utilizamos cookies para melhorar sua experiência. Seus dados são protegidos conforme a LGPD (Lei 13.709/2018).
                     <span className="inline-flex items-center gap-1 ml-1 text-brand-primary-dark"><Shield size={10} /> Dados seguros</span>
                   </p>
                 </div>

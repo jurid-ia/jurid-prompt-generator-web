@@ -28,7 +28,7 @@ export default function TrainingModulePage() {
   const [lessons] = useState<TrainingLesson[]>(DEMO_TRAINING_LESSONS.filter(l => l.module_id === moduleId))
 
   if (!module_) {
-    return <div className="text-center py-20 text-gray-500">Modulo nao encontrado.</div>
+    return <div className="text-center py-20 text-gray-500">Módulo não encontrado.</div>
   }
 
   return (
@@ -95,7 +95,7 @@ export default function TrainingModulePage() {
 
       {lessons.length === 0 && (
         <div className="text-center py-12 text-gray-500 text-sm">
-          Nenhuma aula disponivel neste modulo ainda.
+          Nenhuma aula disponível neste módulo ainda.
         </div>
       )}
     </div>

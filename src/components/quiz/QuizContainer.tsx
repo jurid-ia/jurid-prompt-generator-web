@@ -83,7 +83,7 @@ export default function QuizContainer() {
       navigate('/skill')
     } catch (err) {
       setProcessing(false)
-      toast(err instanceof Error ? err.message : 'Nao foi possivel salvar o quiz. Tente novamente.', 'error')
+      toast(err instanceof Error ? err.message : 'Não foi possível salvar o quiz. Tente novamente.', 'error')
     }
   }
 

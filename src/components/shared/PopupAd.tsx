@@ -84,7 +84,7 @@ export default function PopupAd({
                 onClick={handleClose}
                 className="mt-3 text-xs text-brand-gray-400 hover:text-brand-gray-600 transition-colors cursor-pointer"
               >
-                Nao, obrigado
+                Não, obrigado
               </button>
             </div>
           </motion.div>

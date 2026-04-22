@@ -1,12 +1,13 @@
-import { Sparkles, Loader2 } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import type { QuizQuestion } from '@/types'
+import { quizIconMap } from '@/lib/utils/quiz-icons'
 
 interface InfoSlideProps {
   question: QuizQuestion
 }
 
 export default function InfoSlide({ question }: InfoSlideProps) {
-  const Icon = question.icon === 'loader' ? Loader2 : Sparkles
+  const Icon = (question.icon && quizIconMap[question.icon]) || Sparkles
   const isLoading = question.icon === 'loader'
 
   return (

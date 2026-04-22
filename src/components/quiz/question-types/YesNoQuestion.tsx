@@ -36,7 +36,7 @@ export default function YesNoQuestion({ question, value, onChange }: YesNoQuesti
               : 'border-brand-gray-200 bg-white text-brand-gray-600 hover:border-brand-yellow/50'
           )}
         >
-          <X size={24} /> Nao
+          <X size={24} /> Não
         </button>
       </div>
     </div>

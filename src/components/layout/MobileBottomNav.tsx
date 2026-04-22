@@ -15,7 +15,7 @@ const navItems = [
 
 const drawerLinks = [
   { to: '/', label: 'Dashboard' },
-  { to: '/quiz', label: 'Quiz Juridico' },
+  { to: '/quiz', label: 'Quiz Jurídico' },
   { to: '/skill', label: 'Meu Perfil IA' },
   { to: '/prompts', label: 'Meus Prompts' },
   { to: '/chat', label: 'Gerador de Prompts' },

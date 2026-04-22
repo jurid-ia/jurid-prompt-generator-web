@@ -9,8 +9,8 @@ export default function QuizPage() {
   if (profile?.quiz_completed) {
     return (
       <div className="max-w-2xl mx-auto text-center py-16 animate-fade-in">
-        <h2 className="text-2xl font-bold text-brand-black mb-2">Quiz ja concluido!</h2>
-        <p className="text-brand-gray-400 mb-6">Voce ja completou o quiz juridico. Seus prompts estao prontos.</p>
+        <h2 className="text-2xl font-bold text-brand-black mb-2">Quiz já concluído!</h2>
+        <p className="text-brand-gray-400 mb-6">Você já completou o quiz jurídico. Seus prompts estão prontos.</p>
         <button
           onClick={() => navigate('/prompts')}
           className="px-6 py-3 bg-brand-blue text-white font-medium rounded-xl hover:bg-brand-blue/90 transition-colors cursor-pointer"

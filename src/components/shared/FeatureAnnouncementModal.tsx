@@ -4,9 +4,9 @@ import { X, Rocket, Star, Zap, ArrowRight } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 
 const features = [
-  { icon: Zap, title: 'Gerador de Peticoes com IA', desc: 'Gere peticoes completas em segundos com prompts otimizados.' },
-  { icon: Star, title: 'Pesquisa de Jurisprudencia', desc: 'Encontre precedentes relevantes com busca inteligente.' },
-  { icon: Rocket, title: 'Revisao de Contratos', desc: 'Revise contratos automaticamente e identifique riscos.' },
+  { icon: Zap, title: 'Gerador de Petições com IA', desc: 'Gere petições completas em segundos com prompts otimizados.' },
+  { icon: Star, title: 'Pesquisa de Jurisprudência', desc: 'Encontre precedentes relevantes com busca inteligente.' },
+  { icon: Rocket, title: 'Revisão de Contratos', desc: 'Revise contratos automaticamente e identifique riscos.' },
 ]
 
 export default function FeatureAnnouncementModal() {
@@ -85,7 +85,7 @@ export default function FeatureAnnouncementModal() {
                 onClick={handleClose}
                 className="w-full flex items-center justify-center gap-2 mt-4 px-4 py-3.5 bg-brand-primary-dark text-white rounded-xl font-semibold text-sm hover:bg-brand-primary-dark/90 transition-colors cursor-pointer active:scale-[0.97]"
               >
-                Comecar agora <ArrowRight size={16} />
+                Começar agora <ArrowRight size={16} />
               </button>
             </div>
           </motion.div>

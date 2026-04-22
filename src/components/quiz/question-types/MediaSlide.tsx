@@ -25,7 +25,7 @@ export default function MediaSlide({ question }: MediaSlideProps) {
         ) : (
           <div className="text-center text-brand-gray-400">
             {isVideo ? <Video size={48} className="mx-auto mb-2" /> : <Image size={48} className="mx-auto mb-2" />}
-            <p className="text-sm">Placeholder para {isVideo ? 'video' : 'imagem'}</p>
+            <p className="text-sm">Placeholder para {isVideo ? 'vídeo' : 'imagem'}</p>
           </div>
         )}
       </div>
